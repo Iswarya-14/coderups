@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Courses - Coderups</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <div id="header"></div>
+    
+    <section class="py-16 md:py-20 bg-gray-800 text-gray-200">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <h2 class="text-4xl font-semibold mb-4 text-teal-300">Our Course Offerings</h2>
+          <p class="text-lg text-gray-400">
+            Choose from our range of comprehensive technical courses designed to help you succeed in the tech industry.
+          </p>
+        </div>
+
+        <div id="category-buttons" class="flex flex-wrap justify-center gap-4 mb-12"></div>
+        <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-gray-700 text-gray-100">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <h2 class="text-4xl font-semibold mb-4 text-teal-300">Why Choose Our Courses</h2>
+          <p class="text-lg text-gray-400">We provide comprehensive learning experiences designed to help you succeed in your tech career.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-gray-800 p-6 rounded-lg border border-gray-600 hover:shadow-lg transition-shadow duration-300">
+            <div class="text-teal-300 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open h-8 w-8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Industry-Aligned Curriculum</h3>
+            <p class="text-gray-300">Courses designed with input from tech industry leaders to ensure relevant skills</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-lg border border-gray-600 hover:shadow-lg transition-shadow duration-300">
+            <div class="text-teal-300 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-8 w-8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Expert Instructors</h3>
+            <p class="text-gray-300">Learn from professionals with years of industry experience</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-lg border border-gray-600 hover:shadow-lg transition-shadow duration-300">
+            <div class="text-teal-300 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award h-8 w-8"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Certification</h3>
+            <p class="text-gray-300">Receive industry-recognized certificates upon course completion</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-lg border border-gray-600 hover:shadow-lg transition-shadow duration-300">
+            <div class="text-teal-300 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-8 w-8"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Flexible Schedule</h3>
+            <p class="text-gray-300">Choose from weekday, weekend, or evening batches</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-lg border border-gray-600 hover:shadow-lg transition-shadow duration-300">
+            <div class="text-teal-300 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase h-8 w-8"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Career Support</h3>
+            <p class="text-gray-300">Get help with resume building, interview prep, and job placement</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-lg border border-gray-600 hover:shadow-lg transition-shadow duration-300">
+            <div class="text-teal-300 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones h-8 w-8"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Lifetime Support</h3>
+            <p class="text-gray-300">Access to learning resources and community even after course completion</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+      // Existing JavaScript functions for rendering buttons and courses
+      const courses = [
+        {
+          id: 1,
+          title: "Java Full Stack",
+          icon: "java",
+          duration: "12 weeks",
+          level: "Beginner to Advanced",
+          description: "Master both front-end and back-end development with modern frameworks and tools.",
+          topics: ["HTML/CSS", "JavaScript", "Core Java", "Advanced Java", "Spring Boot", "Servlets", "MySQL"]
+        },
+        {
+          id: 2,
+          title: "DotNet Full Stack",
+          icon: "dotnet",
+          duration: "12 weeks",
+          level: "Intermediate",
+          description: "Learn data analysis, machine learning, and statistical modeling.",
+          topics: ["HTML/CSS", "JavaScript","C#","ASP.NET(MVC)","ADO.NET","SQL Server"]
+        },
+        {
+        id: 3,
+        title: "Python Full Stack",
+        icon: "python",
+        duration: "12 weeks",
+        level: "Intermediate",
+        description: "Master cloud platforms and learn to deploy scalable applications.",
+        topics: ["HTML/CSS", "JavaScript","Python","Django","MySQL","REST APIs"]
+      },
+      {
+        id: 4,
+        title: "MEAN Stack",
+        icon: "mean",
+        duration: "12 weeks",
+        level: "Beginner to Intermediate",
+        description: "Create beautiful, user-friendly interfaces and experiences.",
+        topics: ["HTML/CSS", "JavaScript","MongoDB","Express.js","Angular","Node.js","REST APIs"]
+      },
+      {
+        id: 5,
+        title: "Data Analytics",
+        icon: "da",
+        duration: "12 weeks",
+        level: "Intermediate",
+        description: "Build native and cross-platform mobile applications.",
+        topics: ["Excel","SQL","Python","Power BI","Statistics & Reporting"]
+      },
+      {
+        id: 6,
+        title: "Data Science",
+        icon: "ds",
+        duration: "12 weeks",
+        level: "Advanced",
+        description: "Learn to streamline development and deployment processes.",
+        topics: ["Python","Jupyter Notebooks","SQL","Matplotlib","Git, APIs, Data Cleaning"]
+      },
+      {
+          id: 7,
+          title: "DevOps",
+          icon: "devops",
+          duration: "12 weeks",
+          level: "Beginner to Advanced",
+          description: "Master both front-end and back-end development with modern frameworks and tools.",
+          topics: ["Linux, Shell scripting","Git","Jenkins","Docker","AWS"]
+        },
+        {
+          id: 8,
+          title: "Cloud",
+          icon: "cloud",
+          duration: "12 weeks",
+          level: "Intermediate",
+          description: "Learn data analysis, machine learning, and statistical modeling.",
+          topics: ["AWS", "Azure", "Docker", "Kubernetes", "DevOps", "Security"]
+        },
+        {
+        id: 9,
+        title: "AutoCAD",
+        icon: "cloud",
+        duration: "16 weeks",
+        level: "Intermediate",
+        description: "Master cloud platforms and learn to deploy scalable applications.",
+        topics: ["AutoCAD", "AutoLISP", "Civil 3D", "Revit", "SketchUp"]
+      },
+      {
+        id: 10,
+        title: "Digital Marketing",
+        icon: "dm",
+        duration: "12 weeks",
+        level: "Beginner to Intermediate",
+        description: "Create beautiful, user-friendly interfaces and experiences.",
+        topics: ["SEO", "SEM", "Social Media", "Google Ads", "Analytics"]
+        },
+        {
+          id: 11,
+          title: "MERN Stack",
+          icon: "mern",
+          duration: "12 weeks",
+          level: "Intermediate",
+          description: "Learn data analysis, machine learning, and statistical modeling.",
+          topics: ["HTML/CSS", "JavaScript","MongoDB", "Express", "React", "Node.js"]
+        },
+        {
+        id: 12,
+        title: "Testing",
+        icon: "testing",
+        duration: "12 weeks",
+        level: "Intermediate",
+        description: "Master cloud platforms and learn to deploy scalable applications.",
+        topics: ["Selenium", "JUnit", "TestNG", "Manual Testing", "Automation"]
+      },
+      {
+        id: 13,
+        title: "Cybersecurity",
+        icon: "cybersecurity",
+        duration: "12 weeks",
+        level: "Beginner to Intermediate",
+        description: "Create beautiful, user-friendly interfaces and experiences.",
+        topics: ["Ethical Hacking", "Network Security", "Firewalls"]
+      },
+      {
+        id: 13,
+        title: "Hardware and Networking",
+        icon: "HandN",
+        duration: "12 weeks",
+        level: "Beginner to Intermediate",
+        description: "Create beautiful, user-friendly interfaces and experiences.",
+        topics: ["Routers", "Switches", "TCP/IP", "OSI", "Cabling", "Configuration"]
+      }
+      ];
+
+      const categories = [
+        { id: "all", name: "All Courses" },
+        { id: "development", name: "Development" },
+        { id: "data", name: "Data & AI" },
+        { id: "design", name: "Design" },
+        { id: "cloud", name: "Cloud & DevOps" },
+        { id: "marketing", name: "Marketing & Business"},
+        { id: "testing", name: "Testing"},
+        { id: "cybersecurity", name: "Ethical Hacking"},
+        { id: "networking", name: "Networking"}
+      ];
+
+      let activeCategory = "all";
+
+      function getIcon(name) {
+        const icons = {
+          java: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14l-4-4h-8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /></svg>',
+          dotnet: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4z M9 9h6v6H9z" /></svg>',
+          python: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2c-2.21 0-4 1.79-4 4v4h8V6c0-2.21-1.79-4-4-4zm-4 12H4v4c0 2.21 1.79 4 4 4h4v-4H8v-4zm4 0h8v4c0 2.21-1.79 4-4 4h-4v-4h4v-4z" /></svg>',
+          mean: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4z M8 8h8v8H8z" /></svg>',
+          da: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 20h16M4 14h4v6H4zM10 10h4v10h-4zM16 4h4v16h-4z" /></svg>',
+          ds: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12a3 3 0 0 0 6 0M12 2v2m6.364 1.636l-1.414 1.414M22 12h-2M17.364 17.364l-1.414-1.414M12 22v-2M6.636 17.364l1.414-1.414M2 12h2M6.636 6.636l1.414 1.414" /></svg>',
+          devops: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v4H4zM4 10h16v4H4zM4 16h16v4H4z" /></svg>',
+          cloud: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 18H7a4 4 0 1 1 0-8 5 5 0 0 1 10 0 3 3 0 1 1 0 6z" /></svg>',
+          cad: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2l4 20-4-6-4 6zM12 8v4" /></svg>',
+          dm: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18M12 3v18" /></svg>',
+          mern: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4z M8 8h8v8H8z" /></svg>',
+          testing: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg>',
+          cybersecurity: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6z" /></svg>',
+          HandN: '<svg class="course-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12h18M12 3v6m0 6v6M6 6h12M6 18h12" /></svg>',
+        };
+        return icons[name] || '';
+      }
+
+      // Create category buttons
+      function renderCategories() {
+        const categoryButtons = categories.map(category => `
+          <button onclick="filterCourses('${category.id}')" class="category-button ${activeCategory === category.id ? 'bg-teal-700' : ''}">
+            ${category.name}
+          </button>
+        `).join('');
+
+        document.getElementById('category-buttons').innerHTML = categoryButtons;
+      }
+
+      function filterCourses(category) {
+        activeCategory = category;
+        renderCategories();
+        renderCourses();
+      }
+
+      function renderCourses() {
+        const filteredCourses = activeCategory === "all" ? courses : courses.filter(course => course.category === activeCategory);
+
+        const courseItems = filteredCourses.map(course => `
+          <div class="course-item bg-gray-800 p-6 rounded-lg border border-gray-600 hover:shadow-lg transition-shadow duration-300">
+            <div class="course-icon text-teal-300 mb-4">${getIcon(course.icon)}</div>
+            <h3 class="text-xl font-semibold mb-3">${course.title}</h3>
+            <p class="text-gray-300 mb-3">${course.description}</p>
+            <p class="text-gray-400 text-sm">Duration: ${course.duration}</p>
+            <p class="text-gray-400 text-sm">Level: ${course.level}</p>
+          </div>
+        `).join('');
+
+        document.getElementById('course-grid').innerHTML = courseItems;
+      }function renderCourses() {
+    let filteredCourses = [];
+
+    if (activeCategory === "all") {
+      filteredCourses = courses;
+    } else if (activeCategory === "development") {
+      filteredCourses = courses.filter(course =>
+        course.topics.some(topic =>
+          ["HTML", "CSS", "JavaScript", "React", "Node.js", "C#", "ASP.NET"].includes(topic)
+        )
+      );
+    } else if (activeCategory === "data") {
+      filteredCourses = courses.filter(course =>
+        course.topics.some(topic =>
+          ["Python", "Machine Learning", "Data Visualization", "Statistics", "SQL", "Big Data"].includes(topic)
+        )
+      );
+    } else if (activeCategory === "design") {
+      filteredCourses = courses.filter(course =>
+        course.topics.some(topic =>
+          ["AutoCAD"].includes(topic)
+        )
+      );
+    } else if (activeCategory === "cloud") {
+      filteredCourses = courses.filter(course =>
+        course.topics.some(topic =>
+          ["AWS", "Azure", "DevOps", "CI/CD", "Kubernetes", "Docker"].includes(topic)
+        )
+      );
+    } else if (activeCategory === "marketing") {
+      filteredCourses = courses.filter(course =>
+        course.topics.some(topic =>
+          ["SEO"].includes(topic)
+        )
+      );
+    }
+    else if (activeCategory === "testing") {
+      filteredCourses = courses.filter(course =>
+        course.topics.some(topic =>
+          ["Selenium"].includes(topic)
+        )
+      );
+    } else if (activeCategory === "cybersecurity") {
+      filteredCourses = courses.filter(course =>
+        course.topics.some(topic =>
+          ["Ethical Hacking"].includes(topic)
+        )
+      );
+    } else if (activeCategory === "networking") {
+      filteredCourses = courses.filter(course =>
+        course.topics.some(topic =>
+          ["Routers"].includes(topic)
+        )
+      );
+    }
+
+    const courseHTML = filteredCourses.map(course => `
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-600 hover:shadow-xl transition-shadow duration-300">
+        <div class="mb-4 text-teal-300">${getIcon(course.icon)}</div>
+        <h3 class="text-xl font-bold mb-2">${course.title}</h3>
+        <p class="text-gray-300 mb-2">${course.description}</p>
+        <p class="text-sm text-gray-400 mb-1"><strong>Duration:</strong> ${course.duration}</p>
+        <p class="text-sm text-gray-400 mb-1"><strong>Level:</strong> ${course.level}</p>
+        <p class="text-sm text-gray-400"><strong>Topics:</strong> ${course.topics.join(', ')}</p>
+      </div>
+    `).join('');
+
+    document.getElementById('course-grid').innerHTML = courseHTML;
+  }
+
+
+      // Initialize
+      renderCategories();
+      renderCourses();
+    </script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
