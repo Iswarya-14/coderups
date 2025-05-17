@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enroll Now - Coderups</title>
+  <link rel="icon" href="images/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="nav-header">
+  <a href="index.html" class="back-arrow">&larr;</a>
+  <span class="nav-title">Home</span>
+</div>
+
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Enroll Now at Coderups</h1>
+      <p>Empowering you with job-ready skills for the tech industry.</p>
+      <a href="#enroll-form" class="btn btn-primary">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="form-section" id="enroll-form">
+    <div class="form-wrapper">
+      <h2>Enrollment Form</h2>
+      <p>Fill out your details and we’ll get in touch with you soon.</p>
+      <form id="enrollForm" action="http://localhost:8000/send" method="POST">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Mobile Number</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" required />
+          </div>
+          <div class="form-group">
+            <label for="course">Course Interested In</label>
+            <select id="course" name="course" required>
+              <option value="">Select</option>
+              <option value="Java Full Stack">Java Full Stack</option>
+              <option value="Dot Net Full Stack">Dot Net Full Stack</option>
+              <option value="MERN Full Stack">MERN Full Stack</option>
+              <option value="MEAN Full Stack">MEAN Full Stack</option>
+              <option value="Python Full Stack">Python Full Stack</option>
+              <option value="Data Analytics">Data Analytics</option>
+              <option value="Data Science">Data Science</option>
+              <option value="AWS">AWS</option>
+              <option value="DevOps and Cloud">DevOps and Cloud</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="specialization">Specialization (Optional)</label>
+            <input type="text" id="specialization" name="specialization" />
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+  </section>
+
+<div class="nav-header">
+  <a href="index.html" class="back-arrow">&larr;</a>
+  <span class="nav-title">Home</span>
+</div>
+
+
+  <!-- Scripts -->
+   <script>
+    const form = document.getElementById('enrollForm');
+        if (form) {
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+  
+            const formData = {
+      name: document.querySelector('input[name="name"]').value,
+      email: document.querySelector('input[name="email"]').value,
+      phone: document.querySelector('input[name="phone"]').value,
+      city: document.querySelector('input[name="city"]').value,
+      course: document.querySelector('select[name="course"]').value
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbwpCygHeT6iuWAeHvfDHvrJHa84yKOk5Ks3b0Hx-xsYVwdt0718vPME8kTqdzZAXMVoVA/exec', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.text())
+    .then(response => {
+      alert("Submitted! We'll contact you on WhatsApp.");
+    });
+
+          });
+        }
+   </script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
