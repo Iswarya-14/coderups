@@ -1,16 +1,13 @@
 // Load header
-fetch('header.html')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('header').innerHTML = data;
-  });
+  fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header').innerHTML = data;
 
-  document.addEventListener("DOMContentLoaded", () => {
-  
-    setTimeout(() => {
+      // Now header is loaded, we can safely attach toggle logic
       const menuToggle = document.getElementById("menu-toggle");
       const mobileMenu = document.getElementById("mobile-menu");
-  
+
       if (menuToggle && mobileMenu) {
         menuToggle.addEventListener("click", () => {
           mobileMenu.classList.toggle("hidden");
@@ -18,9 +15,10 @@ fetch('header.html')
       } else {
         console.warn("Menu elements not found");
       }
-    }, 300);
-  });
-  
+    })
+    .catch(error => {
+      console.error("Failed to load header:", error);
+    });
   
 
 // Load footer
