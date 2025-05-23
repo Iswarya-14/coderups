@@ -28,55 +28,18 @@ fetch('footer.html')
     document.getElementById('footer-placeholder').innerHTML = data;
   });
 
+document.addEventListener('DOMContentLoaded', () => {
+  // Load Enquiry Popup
+  fetch('popup.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('popupContainerEnquiry').innerHTML = html;
 
-// Load popup.html into the container and set up functionality
-document.addEventListener('DOMContentLoaded', function () {
-  fetch('popup.html?v=' + Date.now())
-    .then(response => response.text())
-    .then(data => {
-      const container = document.getElementById('popupContainer');
-      if (!container) {
-        console.error("Missing #popupContainer in HTML.");
-        return;
-      }
-
-      container.innerHTML = data;
-      
-
-      // Scroll event to show popup only once
-      function handleScroll() {
-        const popup = document.getElementById('scrollPopup');
-        if (popup && window.scrollY > 100) {
-          if(sessionStorage.getItem('popupClosed') === "true"){
-            popup.style.display = 'none';
-          }
-          else{
-            popup.style.display = 'block';
-          }
-          
-        }
-      }
-
-      window.addEventListener('scroll', handleScroll);
-
-      // Close popup button
-      const closeBtn = document.getElementById('closePopup');
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function () {
-          const popup = document.getElementById('scrollPopup');
-          if (popup) {
-            popup.style.display = 'none';
-            sessionStorage.setItem('popupClosed', 'true'); // Store closed state for this session
-          }
-        });
-      }
-
-      // WhatsApp form submission
+      // WhatsApp form submit
       const form = document.getElementById('contactForm');
       if (form) {
         form.addEventListener('submit', function (e) {
           e.preventDefault();
-
           const name = form.querySelector('input[name="name"]').value;
           const email = form.querySelector('input[name="email"]').value;
           const phone = form.querySelector('input[name="phone"]').value;
@@ -84,14 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const course = form.querySelector('select[name="course"]').value;
           const specialization = form.querySelector('input[name="specialization"]').value;
 
-          const message = `Enquiry details:
-Hello, my name is ${name}.
-Email: ${email}
-Phone: ${phone}
-City: ${city}
-Course Interested: ${course}
-Specialization: ${specialization}`;
-
+          const message = `Enquiry details:\nHello, my name is ${name}.\nEmail: ${email}\nPhone: ${phone}\nCity: ${city}\nCourse Interested: ${course}\nSpecialization: ${specialization}`;
           const phoneNumber = "919092752610";
           const whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
 
@@ -106,4 +62,67 @@ Specialization: ${specialization}`;
       }
     })
     .catch(error => console.error('Failed to load popup.html:', error));
+
+  // Load Offer Popup
+  fetch('offers.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('popupContainerOffer').innerHTML = html;
+    })
+    .catch(error => console.error('Failed to load offers.html:', error));
+
+  // Global close button logic
+  document.addEventListener('click', (e) => {
+    // Enquiry popup close
+    if (e.target.classList.contains('close-popup-enquiry')) {
+      const popup = e.target.closest('.scroll-popup-enquiry');
+      if (popup) {
+        popup.style.display = 'none';
+        sessionStorage.setItem('popupClosed', 'true');
+
+        // On mobile, show offer popup after enquiry is closed
+        if (window.innerWidth < 768) {
+          const offerPopup = document.getElementById('offerPopup');
+          if (offerPopup && sessionStorage.getItem('offerClosed') !== 'true') {
+            offerPopup.style.display = 'block';
+          }
+        }
+      }
+    }
+
+    // Offer popup close
+    if (e.target.classList.contains('close-popup-offer')) {
+      const popup = e.target.closest('.scroll-popup-offer');
+      if (popup) {
+        popup.style.display = 'none';
+        sessionStorage.setItem('offerClosed', 'true');
+      }
+    }
+  });
+
+  // Scroll-based popup display
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      const isMobile = window.innerWidth < 768;
+      const enquiryPopup = document.getElementById('scrollPopup');
+      const offerPopup = document.getElementById('offerPopup');
+
+      if (!isMobile) {
+        // Desktop: Show both if not closed
+        if (enquiryPopup && sessionStorage.getItem('popupClosed') !== 'true') {
+          enquiryPopup.style.display = 'block';
+        }
+        if (offerPopup && sessionStorage.getItem('offerClosed') !== 'true') {
+          offerPopup.style.display = 'block';
+        }
+      } else {
+        // Mobile: Show enquiry first, then offer after closing enquiry
+        if (enquiryPopup && sessionStorage.getItem('popupClosed') !== 'true') {
+          enquiryPopup.style.display = 'block';
+        } else if (offerPopup && sessionStorage.getItem('offerClosed') !== 'true') {
+          offerPopup.style.display = 'block';
+        }
+      }
+    }
+  });
 });
