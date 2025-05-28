@@ -2,24 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/logo.png" />
   <title>Student Reviews</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="images/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-900 text-white font-sans">
 
-    <div id="header"></div>
-    <section id="reviews" class="my-12">
-      <h2 class="text-3xl font-bold mb-6 text-center">Student Reviews</h2>
-    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-  <script src="https://static.elfsight.com/platform/platform.js" async></script>
-  <div class="elfsight-app-e46ba4fa-d2d4-4597-b677-58485dbd0f7d" data-elfsight-app-lazy></div>
-  </section>
+  <div id="header"></div>
+<section class="container">
+  <!-- Review Header -->
+  <h1 class="text-3xl font-bold text-center mt-6 mb-4">Student Reviews</h1>
 
+  <!-- Google Review Button -->
+  <div class="text-center mb-8">
+    <a href="https://search.google.com/local/writereview?placeid=ChIJecSNaWJrrjsRoROE-i4K8ew" target="_blank">
+      <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded shadow">
+      Write a Review on Google
+      </button>
+    </a>
+  </div>
+
+  <!-- Review Grid -->
+  <div id="review-box" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-6 mb-12"></div>
+</section>
+  <!-- Review Script -->
+  <script>
+    const starIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-400 inline" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.943a1 1 0 00.95.69h4.153c.969 0 1.371 1.24.588 1.81l-3.363 2.448a1 1 0 00-.364 1.118l1.287 3.943c.3.921-.755 1.688-1.54 1.118l-3.363-2.448a1 1 0 00-1.176 0l-3.363 2.448c-.785.57-1.84-.197-1.54-1.118l1.287-3.943a1 1 0 00-.364-1.118L2.07 9.37c-.783-.57-.38-1.81.588-1.81h4.153a1 1 0 00.95-.69l1.286-3.943z"/></svg>`;
+
+    fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRgu-JTyyhL7Rfy7QnlEFokQa-9QkHL0s-zDj37aKa4X-qSCHJBIC2-KKvwGcXHlua6KUWIEP2NPtFH/pub?output=csv')
+.then(res => res.text())
+.then(csv => {
+  const results = Papa.parse(csv, { header: true });
+  const rows = results.data;
+
+  const validRows = rows.filter(row => row.Name && row.Rating && row.Comment);
+
+  const container = document.getElementById('review-box');
+
+  validRows.forEach(row => {
+    const name = row.Name.trim();
+    const rating = parseInt(row.Rating);
+    const comment = row.Comment.trim();
+
+    // Double-check skip if any empty values
+    if (!name || !rating || !comment) return;
+
+    let stars = '';
+    for (let i = 0; i < rating; i++) {
+      stars += starIcon;
+    }
+
+    container.innerHTML += `
+      <div class="bg-gray-800 p-5 rounded-xl shadow-md border border-gray-700">
+        <div class="flex items-center mb-2">
+          <div class="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center text-sm font-bold text-white mr-3">
+            ${name.charAt(0).toUpperCase()}
+          </div>
+          <div>
+            <p class="font-medium text-sm text-white">${name}</p>
+            <p class="text-xs text-gray-400">Posted recently</p>
+          </div>
+        </div>
+        <div class="mb-2">${stars}</div>
+        <p class="text-sm text-gray-200 leading-relaxed">${comment}</p>
+      </div>
+    `;
+    AOS.refresh();
+  });
+})
+.catch(err => {
+  console.error("Error loading reviews:", err);
+  document.getElementById('review-box').innerHTML = "<p class='text-red-500'>Failed to load reviews.</p>";
+});
+  </script>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+  <!-- Optional JS -->
+  <script src="js/main.js"></script>
   <div id="footer-placeholder"></div>
 
-  <script src="js/main.js"></script>
 </body>
 </html>
