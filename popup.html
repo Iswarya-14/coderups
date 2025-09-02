@@ -1,10 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - Coderups</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans contact">
 <div class="scroll-popup-enquiry" id="scrollPopup">
   <div class="popup-content-enquiry">
-    <span class="close-popup-enquiry">&times;</span>
-    <div class="popup-columns">
-      <div class="popup-left">
-        <h2>Enquiry now</h2>
-        <form id="contactForm" action="http://localhost:8000/send" method="POST">
+  <h2>Enquiry now <span class="close-popup-enquiry">&times;</span></h2>
+        <form id="contactForm" method="POST">
           <input type="text" name="name" placeholder="Full Name" required>
           <input type="email" name="email" placeholder="Email Address" required>
           <input type="tel" name="phone" placeholder="Mobile Number" required>
@@ -32,3 +41,5 @@
     </div>
   </div>
 </div>
+</body>
+</html>

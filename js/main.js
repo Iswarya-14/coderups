@@ -28,40 +28,183 @@ fetch('footer.html')
     document.getElementById('footer-placeholder').innerHTML = data;
   });
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Load Enquiry Popup
-  fetch('popup.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('popupContainerEnquiry').innerHTML = html;
+  
+// // Inside header fetch block
+// document.addEventListener('click', async (e) => {
+//   if (e.target.id === 'openEnquiryPopup') {
+//     e.preventDefault();
 
-      // WhatsApp form submit
-      const form = document.getElementById('contactForm');
-      if (form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          const name = form.querySelector('input[name="name"]').value;
-          const email = form.querySelector('input[name="email"]').value;
-          const phone = form.querySelector('input[name="phone"]').value;
-          const city = form.querySelector('input[name="city"]').value;
-          const course = form.querySelector('select[name="course"]').value;
-          const specialization = form.querySelector('input[name="specialization"]').value;
+//     const container = document.getElementById('popupContainerEnquiry');
 
-          const message = `Enquiry details:\nHello, my name is ${name}.\nEmail: ${email}\nPhone: ${phone}\nCity: ${city}\nCourse Interested: ${course}\nSpecialization: ${specialization}`;
-          const phoneNumber = "919092752610";
-          const whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+//     // Load popup only once
+//     if (!document.getElementById('scrollPopup')) {
+//       try {
+//         const res = await fetch('popup.html');
+//         const html = await res.text();
+//         container.innerHTML = html;
 
-          const popupWindow = window.open(whatsappUrl, "_blank");
+//         // Add close button logic
+//         document.addEventListener('click', (e) => {
+//           if (e.target.classList.contains('close-popup-enquiry')) {
+//             const popup = document.getElementById('scrollPopup');
+//             if (popup) popup.style.display = 'none';
+//             document.body.style.overflow = ''; // Re-enable scroll
+//           }
+//         });
 
-          if (popupWindow) {
-            alert('WhatsApp popup opened. Please confirm if the message was sent.');
-          } else {
-            alert('Popup blocked. Please allow popups for this site.');
+//         // WhatsApp form submission
+//         const form = document.getElementById('contactForm');
+//         if (form) {
+//           form.addEventListener('submit', function (e) {
+//             e.preventDefault();
+//             const name = form.querySelector('input[name="name"]').value;
+//             const email = form.querySelector('input[name="email"]').value;
+//             const phone = form.querySelector('input[name="phone"]').value;
+//             const city = form.querySelector('input[name="city"]').value;
+//             const course = form.querySelector('select[name="course"]').value;
+//             const specialization = form.querySelector('input[name="specialization"]').value;
+
+//             const message = `Enquiry details:\nHello, my name is ${name}.\nEmail: ${email}\nPhone: ${phone}\nCity: ${city}\nCourse Interested: ${course}\nSpecialization: ${specialization}`;
+//             const phoneNumber = "919092752610";
+//             const whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+//             const popupWindow = window.open(whatsappUrl, "_blank");
+
+//             if (popupWindow) {
+//               alert('WhatsApp popup opened. Please confirm if the message was sent.');
+//             } else {
+//               alert('Popup blocked. Please allow popups for this site.');
+//             }
+//           });
+//         }
+
+//         // Show popup after loading
+//         const popup = document.getElementById('scrollPopup');
+//         if (popup) {
+//           popup.style.display = 'flex';
+//           document.body.style.overflow = 'hidden'; // Prevent background scroll on mobile
+//         }
+
+//       } catch (err) {
+//         console.error('Failed to load popup.html:', err);
+//       }
+//     } else {
+//       // Already loaded — just show
+//       const popup = document.getElementById('scrollPopup');
+//       if (popup) {
+//         popup.style.display = 'flex';
+//         document.body.style.overflow = 'hidden';
+//       }
+//     }
+//   }
+// });
+
+// === POPUP HANDLER ===
+document.addEventListener('click', async (e) => {
+  if (e.target.id === 'openEnquiryPopup') {
+    e.preventDefault();
+
+    const container = document.getElementById('popupContainerEnquiry');
+
+    // Load popup only once
+    if (!document.getElementById('scrollPopup')) {
+      try {
+        const res = await fetch('popup.html');
+        const html = await res.text();
+        container.innerHTML = html;
+
+        // Close button logic
+        document.addEventListener('click', (e) => {
+          if (e.target.classList.contains('close-popup-enquiry')) {
+            const popup = document.getElementById('scrollPopup');
+            if (popup) popup.style.display = 'none';
+            document.body.style.overflow = '';
           }
         });
+
+        // === FORM SUBMISSION (send to backend) ===
+        // const form = document.getElementById('contactForm');
+        // if (form) {
+        //   form.addEventListener('submit', async function (e) {
+        //     e.preventDefault();
+
+        //     const formData = new FormData(form);
+        //     const data = Object.fromEntries(formData.entries());
+
+        //     try {
+        //       const res = await fetch("http://localhost:3000/send", {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify(data)
+        //       });
+
+        //       if (res.ok) {
+        //         alert("✅ Your enquiry has been sent successfully!");
+        //         form.reset();
+        //         const popup = document.getElementById('scrollPopup');
+        //         if (popup) popup.style.display = 'none';
+        //         document.body.style.overflow = '';
+        //       } else {
+        //         alert("❌ Failed to send enquiry. Please try again later.");
+        //       }
+        //     } catch (error) {
+        //       console.error("Error:", error);
+        //       alert("⚠️ Error sending enquiry. Check console for details.");
+        //     }
+        //   });
+        // }
+        const form = document.getElementById('contactForm');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch("http://localhost:3000/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        alert("✅ Your enquiry has been sent successfully!");
+        form.reset();
+      } else {
+        alert("❌ Failed to send enquiry. Please try again later.");
       }
-    })
-    .catch(error => console.error('Failed to load popup.html:', error));
+    } catch (err) {
+      console.error("Error:", err);
+      alert("⚠️ Error sending enquiry.");
+    }
+  });
+}
+
+
+        // Show popup
+        const popup = document.getElementById('scrollPopup');
+        if (popup) {
+          popup.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+
+      } catch (err) {
+        console.error('Failed to load popup.html:', err);
+      }
+    } else {
+      // Already loaded
+      const popup = document.getElementById('scrollPopup');
+      if (popup) {
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+  }
+});
+
+// Offer popup
+document.addEventListener('DOMContentLoaded', () => {
 
   // Load Offer Popup
   fetch('offers.html')
@@ -100,29 +243,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Scroll-based popup display
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      const isMobile = window.innerWidth < 768;
-      const enquiryPopup = document.getElementById('scrollPopup');
-      const offerPopup = document.getElementById('offerPopup');
+  // Scroll-based offer popup display only
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    const offerPopup = document.getElementById('offerPopup');
 
-      if (!isMobile) {
-        // Desktop: Show both if not closed
-        if (enquiryPopup && sessionStorage.getItem('popupClosed') !== 'true') {
-          enquiryPopup.style.display = 'block';
-        }
-        if (offerPopup && sessionStorage.getItem('offerClosed') !== 'true') {
-          offerPopup.style.display = 'block';
-        }
-      } else {
-        // Mobile: Show enquiry first, then offer after closing enquiry
-        if (enquiryPopup && sessionStorage.getItem('popupClosed') !== 'true') {
-          enquiryPopup.style.display = 'block';
-        } else if (offerPopup && sessionStorage.getItem('offerClosed') !== 'true') {
-          offerPopup.style.display = 'block';
-        }
-      }
+    // Show offer popup if not already closed
+    if (offerPopup && sessionStorage.getItem('offerClosed') !== 'true') {
+      offerPopup.style.display = 'block';
     }
-  });
+  }
+});
 });

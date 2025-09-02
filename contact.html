@@ -144,42 +144,79 @@
       </div>
     </div>
   </section>
+
+  <section class="form-section">
+    <div class="scroll-popup-enquiry" id="scrollPopup">
+  <div class="popup-content-enquiry">
+    <div class="popup-columns">
+      <div class="popup-left">
+        <form id="contactForm" class="form-wrapper" action="http://localhost:3000/send" method="POST">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="tel" name="phone" placeholder="Mobile Number" required>
+          <input type="text" name="city" placeholder="City you live in" required>
+          <select name="course" required>
+            <option value="">Course Interested in</option>
+            <option value="Java Full Stack">Java Full Stack</option>
+            <option value="Dot Net Full Stack">Dot Net Full Stack</option>
+            <option value="MERN Full Stack">MERN Full Stack</option>
+            <option value="MEAN Full Stack">MEAN Full Stack</option>
+            <option value="Python Full Stack">Python Full Stack</option>
+            <option value="Data Analytics">Data Analytics</option>
+            <option value="Data Science">Data Science</option>
+            <option value="DevOps and Cloud">DevOps and Cloud</option>
+            <option value="AutoCAD">AutoCAD</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Testing">Testing</option>
+            <option value="Hardware and Networking">Hardware and Networking</option>
+            <option value="Cybersecurity">Cybersecurity</option>
+          </select>
+          <input type="text" name="specialization" placeholder="Specialization">
+          <button type="submit">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  </section>
+<!-- Enquiry Popup Container -->
+<div id="popupContainerEnquiry"></div>
   <div id="footer-placeholder"></div>
 
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById('demoForm');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+//   document.addEventListener("DOMContentLoaded", function () {
+//     const form = document.getElementById('demoForm');
+//     form.addEventListener('submit', function (e) {
+//       e.preventDefault();
 
-      const name = form.querySelector('input[name="name"]').value.trim();
-      const email = form.querySelector('input[name="email"]').value.trim();
-      const phone = form.querySelector('input[name="phone"]').value.trim();
-      const city = form.querySelector('input[name="city"]').value.trim();
-      const course = form.querySelector('select[name="course"]').value.trim();
+//       const name = form.querySelector('input[name="name"]').value.trim();
+//       const email = form.querySelector('input[name="email"]').value.trim();
+//       const phone = form.querySelector('input[name="phone"]').value.trim();
+//       const city = form.querySelector('input[name="city"]').value.trim();
+//       const course = form.querySelector('select[name="course"]').value.trim();
 
-      // Validate form values
-      if (!name || !email || !phone || !city || !course) {
-        alert("Please fill out all fields before submitting.");
-        return;
-      }
+//       // Validate form values
+//       if (!name || !email || !phone || !city || !course) {
+//         alert("Please fill out all fields before submitting.");
+//         return;
+//       }
 
-      const message = `Details for Demo:
-      Hello, my name is ${name}.
-      Email: ${email}
-      Phone: ${phone}
-City: ${city}
-Course Interested: ${course}`;
+//       const message = `Details for Demo:
+//       Hello, my name is ${name}.
+//       Email: ${email}
+//       Phone: ${phone}
+// City: ${city}
+// Course Interested: ${course}`;
 
-      const phoneNumber = "919092752610"; // ensure this is a valid WhatsApp number
-      const whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
-      console.log("Redirecting to:", whatsappUrl);
-      alert("Generated WhatsApp URL:\n" + whatsappUrl);
+//       const phoneNumber = "919092752610"; // ensure this is a valid WhatsApp number
+//       const whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+//       console.log("Redirecting to:", whatsappUrl);
+//       alert("Generated WhatsApp URL:\n" + whatsappUrl);
 
-      // Redirect instead of window.open to avoid popup blockers
-      window.open(whatsappUrl, "_blank");
-    });
-  });
+//       // Redirect instead of window.open to avoid popup blockers
+//       window.open(whatsappUrl, "_blank");
+//     });
+//   });
 </script>
 
 

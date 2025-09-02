@@ -687,32 +687,19 @@ body {
   /* popup.css - Japanese-inspired dark theme for enquiry popup */
 /* Base popup styling (shared) */
 /* Base popup style */
-.scroll-popup {
-  display: none;
-  position: fixed;
-  background: #1a1a1a;
-  color: #e0e0e0;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  max-width: 400px;
-  padding: 1.5rem;
-  z-index: 9999;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
 .scroll-popup-enquiry {
-  display: none;
+  display: block;
   position: fixed;
   background: #1a1a1a;
   color: #e0e0e0;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  max-width: 400px;
+  max-width: 30%;
   padding: 1.5rem;
   z-index: 9999;
   animation: fadeIn 0.3s ease-in-out;
-  left: 20px;
-  top: 20px;
+  right: 30%;
+  top: 10%;
 }
 
 
@@ -864,6 +851,48 @@ form button:hover {
 }
 
 /* Offer Popup Styling */
+#scrollPopup {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 20%;
+  width: 100vw;
+  height: 100vh;
+  background: #00000091;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.popup-content-enquiry {
+  background: #fff;
+  color: black;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  border-radius: 10px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Mobile Optimized */
+@media (max-width: 480px) {
+  .popup-content-enquiry {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .popup-content-enquiry input,
+  .popup-content-enquiry select,
+  .popup-content-enquiry button {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+
 .scroll-popup-offer {
   display: none;
   position: fixed;
@@ -878,6 +907,11 @@ form button:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   z-index: 9998;
   animation: fadeInUp 0.3s ease-in-out;
+}
+
+.close-popup-enquiry{
+  cursor: pointer;
+  float: right;
 }
 
 .popup-content-offer {
@@ -934,4 +968,48 @@ form button:hover {
     width: 90%;
     max-width: 75%;
   }
+}
+
+/* sticker */
+.announcement-sticker {
+  position: fixed;
+  top: 20px;
+  right: -40px;
+  background: linear-gradient(135deg, #10b981, #059669); /* green gradient */
+  transform: rotate(45deg);
+  padding: 8px 30px;
+  z-index: 9999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  pointer-events: none;
+  user-select: none;
+  border-radius: 6px;
+}
+
+.announcement-text {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Mobile adjustment */
+@media (max-width: 480px) {
+  .announcement-sticker {
+    top: 15px;
+    right: -50px;
+    padding: 6px 20px;
+  }
+
+  .announcement-text {
+    font-size: 12px;
+  }
+}
+
+.announcement-sticker {
+  animation: shakeTag 3s infinite ease-in-out;
+}
+
+@keyframes shakeTag {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(-3px); }
 }
