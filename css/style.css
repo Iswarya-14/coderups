@@ -36,12 +36,24 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    gap: 1rem;
   }
   
   .brand {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .brand-link {
+    min-width: 0;
+  }
+
+  .brand-text {
+    display: inline-block;
+    line-height: 1.1;
+    white-space: nowrap;
   }
   
   .brand img {
@@ -83,6 +95,28 @@
   @media (max-width: 768px) {
     .nav.desktop-nav {
       display: none;
+    }
+
+    .header-container {
+      padding: 0.85rem 1rem;
+    }
+
+    .brand-text {
+      font-size: 1.15rem;
+    }
+
+    .menu-btn {
+      flex-shrink: 0;
+    }
+
+    .mobile-nav {
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .mobile-nav-list {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     .hidden {
@@ -130,6 +164,10 @@
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 9999px;
   }
+
+  .footer-actions {
+    justify-content: flex-start;
+  }
   
   .footer-section a:hover {
     color: #3b82f6;
@@ -167,18 +205,26 @@
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .footer-container {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+
+    .footer-brand,
+    .footer-actions,
+    .footer .social-icons {
+      justify-content: center;
     }
   }
   
   @media (max-width: 480px) {
     .footer-container {
-      grid-template-columns: 1fr;
-      text-align: center;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   
     .footer-brand,
-    .social-icons {
+    .footer .social-icons {
       justify-content: center;
     }
   }
@@ -281,6 +327,7 @@ body {
     color: #ebeff5;
     text-align: center;
     max-width: 900px;
+    width: min(100%, 900px);
     margin: 0 auto;
     padding: 24px 20px 8px;
   }
@@ -362,21 +409,22 @@ body {
     opacity: 0.7;
   }
 
-  .social-icons {
+  .hero .social-icons {
     display: flex;
     gap: 16px;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    flex-wrap: wrap;
   }
   
-  .social-icons a img {
+  .hero .social-icons a img {
     width: 32px;
     height: 32px;
     transition: transform 0.3s ease, filter 0.3s ease;
   }
   
-  .social-icons a img:hover {
+  .hero .social-icons a img:hover {
     transform: scale(1.1);
     filter: brightness(1.2);
   }
@@ -435,13 +483,22 @@ body {
     }
 
     .hero-content {
-      padding: 16px 8px 2px;
+      width: 100%;
+      padding: 16px 0 2px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.11em;
     }
 
     .hero-actions {
       flex-direction: column;
       width: 100%;
       max-width: 320px;
+      align-items: stretch;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hero-primary-cta,
@@ -455,6 +512,11 @@ body {
 
     .hero-highlights span {
       font-size: 0.78rem;
+    }
+
+    .hero .social-icons {
+      gap: 14px;
+      margin-top: 18px;
     }
   }
   
@@ -631,7 +693,7 @@ body {
     z-index: 1;
   }
   
-  .hero-content {
+  .hero-section .hero-content {
     position: relative;
     z-index: 2;
     max-width: 768px;
@@ -639,20 +701,20 @@ body {
     text-align: center;
   }
   
-  .hero-content h1 {
+  .hero-section .hero-content h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: #fff;
   }
   
-  .hero-content p {
+  .hero-section .hero-content p {
     font-size: 1.125rem;
     color: #ccc;
     margin-bottom: 2rem;
   }
   
-  .hero-content .btn {
+  .hero-section .hero-content .btn {
     padding: 0.75rem 2rem;
     margin: 0.5rem;
     border: none;
@@ -803,11 +865,11 @@ body {
       gap: 1.5rem;
     }
   
-    .hero-content h1 {
+    .hero-section .hero-content h1 {
       font-size: 3rem;
     }
   
-    .hero-content p {
+    .hero-section .hero-content p {
       font-size: 1.25rem;
     }
   }
@@ -1004,6 +1066,36 @@ form button:hover {
   overflow-y: auto;
 }
 
+.popup-enquiry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.popup-enquiry-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.popup-content-enquiry .close-popup-enquiry {
+  border: 0;
+  background: transparent;
+  color: #374151;
+  font-size: 1.75rem;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.popup-content-enquiry .close-popup-enquiry:hover {
+  color: #111827;
+}
+
 /* Mobile Optimized */
 @media (max-width: 480px) {
   .popup-content-enquiry {
@@ -1089,12 +1181,12 @@ form button:hover {
 @media (max-width: 767px) {
   .scroll-popup-enquiry,
   .scroll-popup-offer {
-    left: 40% !important;
+    left: 50% !important;
     right: auto !important;
     top: 20px !important;
     transform: translateX(-50%);
     width: 90%;
-    max-width: 75%;
+    max-width: 420px;
   }
 }
 
@@ -1140,4 +1232,200 @@ form button:hover {
 @keyframes shakeTag {
   0%, 100% { transform: rotate(45deg) translateY(0); }
   50% { transform: rotate(45deg) translateY(-3px); }
+}
+
+/* Shared page polish */
+.category-button {
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  background: rgba(15, 23, 42, 0.85);
+  color: #d1fae5;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.category-button:hover {
+  background: rgba(13, 148, 136, 0.2);
+  border-color: rgba(94, 234, 212, 0.45);
+  transform: translateY(-1px);
+}
+
+.highlight-box,
+.cta-box {
+  background: rgba(12, 18, 34, 0.78);
+  border: 1px solid rgba(194, 212, 255, 0.16);
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 768px) {
+  body {
+    line-height: 1.7;
+  }
+
+  .about-page .overlay {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .about-page .overlay h1,
+  .courses-page h2,
+  .contact h1 {
+    letter-spacing: -0.02em;
+  }
+
+  .about-page .section-bg {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-top: 3.25rem !important;
+    padding-bottom: 3.25rem !important;
+  }
+
+  .about-page .max-w-5xl {
+    gap: 2rem;
+  }
+
+  .about-page h2 {
+    line-height: 1.25;
+  }
+
+  .about-page p,
+  .courses-page p,
+  .contact p {
+    line-height: 1.65;
+  }
+
+  .courses-page .container,
+  .contact .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .courses-page section,
+  .contact section {
+    overflow-x: clip;
+  }
+
+  .courses-page h2 {
+    font-size: clamp(1.8rem, 6vw, 2.25rem);
+    margin-bottom: 0.85rem;
+  }
+
+  .courses-page #category-buttons {
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .category-button {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    padding: 0.85rem 1rem;
+  }
+
+  .courses-page #course-grid,
+  .courses-page .grid {
+    gap: 1.25rem;
+  }
+
+  .courses-page #course-grid > div,
+  .courses-page section .grid > div {
+    padding: 1.25rem;
+  }
+
+  .courses-page h3 {
+    line-height: 1.3;
+  }
+
+  .contact section:first-of-type {
+    padding-top: 4.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .contact h1 {
+    font-size: clamp(2.2rem, 9vw, 3.25rem) !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .contact section:first-of-type p {
+    font-size: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .contact section:first-of-type .grid,
+  .contact .space-y-8 {
+    gap: 1rem;
+  }
+
+  .contact .max-w-3xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .contact #demo {
+    padding: 1.5rem;
+  }
+
+  .contact .form-wrapper {
+    padding: 1.25rem;
+  }
+
+  .contact .form-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .contact .flex.flex-wrap.gap-3 {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page .overlay {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .about-page .overlay h1 {
+    font-size: 2rem;
+  }
+
+  .about-page .overlay p,
+  .courses-page .max-w-3xl p,
+  .contact section:first-of-type p {
+    font-size: 0.98rem !important;
+  }
+
+  .about-page .highlight-box,
+  .about-page .cta-box,
+  .contact #demo,
+  .courses-page #course-grid > div,
+  .courses-page section .grid > div {
+    padding: 1rem;
+  }
+
+  .about-page ul {
+    padding-left: 0;
+  }
+
+  .courses-page #category-buttons {
+    gap: 0.65rem;
+  }
+
+  .category-button {
+    max-width: none;
+    font-size: 0.95rem;
+  }
+
+  .contact .max-w-3xl {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .contact .flex.flex-wrap.gap-3 a {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
 }
