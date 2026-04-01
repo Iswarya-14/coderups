@@ -13,7 +13,6 @@
 <body>
   <div id="header"></div>
 
-  <!-- HERO SECTION -->
   <section class="hero" id="index">
     <video autoplay muted loop playsinline class="hero-video">
       <source src="videos/index-video.mp4" type="video/mp4" />
@@ -21,17 +20,26 @@
     </video>
 
     <div class="hero-content">
-      <h1>Every great sailor was once a beginner — start your journey today.</h1>
+      <p class="hero-eyebrow">Practical Tech Training For Career Starters And Career Switchers</p>
+      <h1>Learn job-ready skills with live projects, mentor support, and guided placement preparation.</h1>
+      <div class="hero-actions">
+        <a href="courses.html" class="hero-primary-cta">View Courses</a>
+        <a href="contact.html#demo" class="hero-secondary-cta">Book Free Demo</a>
+      </div>
+      <div class="hero-highlights" aria-label="Key highlights">
+        <span>Hands-on projects</span>
+        <span>Small batch guidance</span>
+        <span>Placement assistance</span>
+      </div>
       <div class="social-icons mt-4">
-        <a href="https://instagram.com" target="_blank"><img src="images/instagram.svg" alt="Instagram" loading="lazy" /></a>
-        <a href="https://facebook.com" target="_blank"><img src="images/facebook.svg" alt="Facebook" loading="lazy" /></a>
-        <a href="https://youtube.com" target="_blank"><img src="images/youtube.svg" alt="YouTube" loading="lazy" /></a>
-        <a href="https://linkedin.com" target="_blank"><img src="images/linkedin.svg" alt="LinkedIn" loading="lazy" /></a>
+        <a href="https://wa.me/919384271412" target="_blank" rel="noopener noreferrer"><img src="images/instagram.svg" alt="Chat on WhatsApp" loading="lazy" /></a>
+        <a href="tel:+919384271412"><img src="images/twitter.svg" alt="Call Coderups" loading="lazy" /></a>
+        <a href="mailto:coderupsmedia@gmail.com"><img src="images/youtube.svg" alt="Email Coderups" loading="lazy" /></a>
+        <a href="contact.html"><img src="images/linkedin.svg" alt="Visit contact page" loading="lazy" /></a>
       </div>
     </div>
   </section>
 
-  <!-- MARQUEE SECTION -->
   <div class="infinite-marquee">
     <div class="marquee-track">
       <div class="marquee-content">
@@ -43,7 +51,6 @@
         <span class="news-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Analytics" />Data Analytics - Excel, SQL, Power BI, Tableau</span>
       </div>
       <div class="marquee-content" aria-hidden="true">
-        <!-- Duplicate content for seamless loop -->
         <span class="news-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />Java Full Stack - Spring Boot, Angular, MySQL</span>
         <span class="news-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET" />.NET Full Stack - ASP.NET, C#, SQL Server</span>
         <span class="news-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />Python Full Stack - Django, React, PostgreSQL</span>
@@ -53,7 +60,7 @@
       </div>
     </div>
   </div>
-  <!-- FEATURES SECTION -->
+
   <section class="py-16 md:py-20 bg-[#0f0f0f]">
     <div class="container mx-auto px-4 md:px-6">
       <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
@@ -65,7 +72,6 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Card Template -->
         <div class="bg-[#1a1a1a] p-6 rounded-2xl shadow-lg border border-gray-700 hover:shadow-xl transition">
           <div class="text-indigo-400 mb-4"><i data-lucide="book-open" class="w-8 h-8"></i></div>
           <h3 class="text-xl font-bold text-white mb-3">Comprehensive Curriculum</h3>
@@ -105,22 +111,13 @@
     </div>
   </section>
 
-<!-- Enquiry Popup Container -->
-<div id="popupContainerEnquiry"></div>
+  <div id="popupContainerEnquiry"></div>
+  <div id="popupContainerOffer"></div>
+  <div id="footer-placeholder"></div>
 
-<!-- Offer Popup Container -->
-<!-- <div id="popupContainerOffer"></div> -->
-
- <div id="footer-placeholder"></div>
-
-  <!-- Init Lucide Icons -->
   <script>
     lucide.createIcons();
   </script>
-
-  <!-- Optional: Carousel cleanup (if not used) -->
-  <!-- <script> const track = document.getElementById("carousel-track"); ... </script> -->
-
   <script src="js/main.js"></script>
 </body>
 </html>
